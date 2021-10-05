@@ -1,0 +1,45 @@
+{{> header}}
+{{> adminNavbar}}
+
+<div class="container-fluid">
+{{> sidebar}}
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+          </div>
+          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+            <span data-feather="calendar"></span>
+            This week
+          </button>
+        </div>
+      </div>
+
+      <h2>Movies</h2>
+      <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+			{{#each movies}}
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+              <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">{{this.name}}</h4>
+              </div>
+              <div class="card-body">
+                <img src="{{this.poster}}" alt="">
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>{{this.duration}}</li>
+                </ul>
+                <a class="w-100 btn btn-lg btn-success" href="/detail/{{this.id}}">detail</a>
+              </div>
+            </div>
+          </div>
+		  {{/each}}
+        </div>
+    </main>
+  </div>
+</div>
+
+{{> footer}}

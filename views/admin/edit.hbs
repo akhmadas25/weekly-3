@@ -1,0 +1,54 @@
+{{> header}}
+{{> adminNavbar}}
+
+{{#if message}}
+  <div class="alert alert-{{message.type}}" role="alert">
+    {{message.message}}
+  </div>
+{{/if}}
+
+<div class="container-fluid">
+{{> sidebar}}
+{{#each movies}}
+<div class="container mt-5 mb-5">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-md-6">
+                <form action="/edit" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label">Movie title</label>
+                    <input type="text" class="form-control" name="movie_title">
+                    <input type="hidden" name="id" value="{{this.id}}"/>
+                    <input type="hidden" name="oldPoster" value="{{this.poster}}"/>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Movie poster</label>
+                    <input type="file" id="file" onchange="handleChange()" class="form-control" name="image">
+                    <div id="preview-cover"></div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Duration</label>
+                    <input type="text" class="form-control" name="duration">
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-warning mt-4 signup " type="submit">Update Movie</button>
+                </div>
+                <input type="hidden" id="url-cover" value="{{this.poster}}">
+                </form>
+        </div>
+    </div>
+</div>
+</div>
+{{/each}}
+<script>
+  function handleChange(){
+    const previewElement = document.getElementById('preview-cover');
+    const urlCover = document.getElementById('url-cover').value;
+    previewElement.innerHTML = `<img src="${urlCover}" style="width: 150px;" class="mt-3"/>`
+
+    const value = URL.createObjectURL(event.target.files[0]);
+    console.log(value);
+    previewElement.innerHTML = `<img src="${value}" style="width: 150px;" class="mt-3"/>`
+  }
+</script>
+
+{{> footer}}

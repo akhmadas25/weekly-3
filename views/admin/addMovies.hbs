@@ -1,0 +1,55 @@
+{{> header}}
+{{> adminNavbar}}
+
+{{#if message}}
+  <div class="alert alert-{{message.type}}" role="alert">
+    {{message.message}}
+  </div>
+{{/if}}
+<div class="container-fluid">
+{{> sidebar}}
+
+<div class="container mt-5 mb-5">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-md-6">
+                <form action="/addMovies" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label">Movie title</label>
+                    <input type="text" class="form-control" name="movie_title">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Movie poster</label>
+                    <input type="file" id="file" onchange="handleChange()" class="form-control" name="image">
+                    <div id="preview-cover"></div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Duration</label>
+                    <input type="text" class="form-control" name="duration">
+                </div>
+                <div class="form-input">
+                    <label class="form-label">type</label>
+                    <select class="form-select" name="category">
+                            {{#each type}}
+                            <option value={{this.id}}>{{this.name}}</option>
+                            {{/each}}
+                    </select>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-warning mt-4 signup " type="submit">Add Movie</button>
+                </div>
+                </form>
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+  function handleChange(){
+    const previewElement = document.getElementById('preview-cover');
+    const value = URL.createObjectURL(event.target.files[0]);
+    console.log(value);
+    previewElement.innerHTML = `<img src="${value}" style="width: 150px;" class="mt-3"/>`
+  }
+</script>
+
+{{> footer}}

@@ -1,0 +1,21 @@
+{{> header}}
+{{> navbar}}
+
+<div class="container-fluid bg-dark text-center">
+    <form action="/buy" method="POST">
+
+    <div class="container text-light bg-dark">
+        <input type="checkbox" class="btn-check" id="first" name="showTime" value="08:00" autocomplete="off">
+        <label class="btn btn-outline-primary" for="first">08:00</label>
+        <span class="me-5">
+            <input type="checkbox" class="btn-check" id="second" name="showtime" value="11:00" autocomplete="off">
+            <label class="btn btn-outline-primary" for="second">11:00</label>
+        </span>
+    </div>
+    <div class="text-center">
+        <button class="btn btn-warning mt-4 signup " type="submit">proceed to checkout</button>
+    </div>
+    </form>
+</div>
+
+{{> footer}}
