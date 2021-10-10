@@ -1,11 +1,11 @@
 {{> header}}
 {{> navbar}}
 
-<main>
+<main class="bg-dark">
   {{#each movies}}
     <div class="container-fluid bg-dark text-white">
         <div class="container py-3">
-            <h3>{{this.name}}</h3>
+          <h3>{{this.name}}</h3>
           <div class="row">
               <div class="col">
                 <img src="{{this.poster}}" alt="" style="height: 400px;">
@@ -14,14 +14,12 @@
                 <p>{{this.duration}}</p>
                 <a class="btn btn-success me-2">Watch Trailer</a>
                 <a class="btn btn-success" href="/buy/{{this.id}}">Buy Ticket</a>
+                <h3>Sinopsis</h3>
+                <p>{{this.sinopsis}}</p>
               </div>
               <div class="col"></div>
               <div class="col"></div>
           </div>
-        </div>
-        <div class="container py-3">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste sunt tenetur unde sed vero adipisci, repellendus, quod dicta quidem impedit libero accusamus totam, ullam enim amet dolores a nesciunt ratione!</p>
-            {{!-- {{this.sinopsis}} --}}
         </div>
     </div>
   {{/each}}

@@ -1,21 +1,47 @@
 {{> header}}
 {{> navbar}}
 
-<div class="container-fluid bg-dark text-center">
+<main class="buy bg-dark">
+<div class="container-fluid">
     <form action="/buy" method="POST">
 
-    <div class="container text-light bg-dark">
-        <input type="checkbox" class="btn-check" id="first" name="showTime" value="08:00" autocomplete="off">
-        <label class="btn btn-outline-primary" for="first">08:00</label>
-        <span class="me-5">
-            <input type="checkbox" class="btn-check" id="second" name="showtime" value="11:00" autocomplete="off">
-            <label class="btn btn-outline-primary" for="second">11:00</label>
-        </span>
+    <div class="container text-left text-light pt-5">
+        {{!-- <h3>fill this detail</h3> --}}
+            <h4>date:</h4>
+        <div class="col-md-3">
+            <input type="date" name="showDate" class="form-control"> 
+        </div>
+        <input type="hidden" name="movie_id" value={{id}}>
+        <h4 class="pt-2">show-time:</h4>
+        <input type="radio" class="btn-check" name="time" id="option1" value="08:00" autocomplete="off">
+        <label class="btn btn-outline-primary me-5" for="option1">08:00</label>
+
+        <input type="radio" class="btn-check" name="time" id="option2" value="11:00" autocomplete="off">
+        <label class="btn btn-outline-primary me-5" for="option2">11:00</label>
+
+        <input type="radio" class="btn-check" name="time" id="option3" value="13:00" autocomplete="off">
+        <label class="btn btn-outline-primary me-5" for="option3">13:00</label>
+
+        <input type="radio" class="btn-check" name="time" id="option4" value="15:00" autocomplete="off">
+        <label class="btn btn-outline-primary me-5" for="option4">15:00</label>
+        {{!-- venue --}}
+    
+        <h4 class="mt-5">venue:</h4>
+        <input type="radio" class="btn-check" name="venue" id="venue1" value="Theatre 1" autocomplete="off">
+        <label class="btn btn-outline-light me-5" for="option1">Theatre 1</label>
+
+        <input type="radio" class="btn-check" name="venue" id="venue2" value="Theatre 2" autocomplete="off">
+        <label class="btn btn-outline-light me-5" for="option2">Theatre 2</label>
+
+        <input type="radio" class="btn-check" name="venue" id="venue3" value="Theatre 3" autocomplete="off">
+        <label class="btn btn-outline-light me-5" for="option3">Theatre 3</label>
+    
     </div>
     <div class="text-center">
-        <button class="btn btn-warning mt-4 signup " type="submit">proceed to checkout</button>
+        <button class="btn btn-warning mt-4 signup " type="submit">buy ticket</button>
     </div>
     </form>
 </div>
+</main>
 
 {{> footer}}

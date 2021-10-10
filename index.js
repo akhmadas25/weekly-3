@@ -76,7 +76,7 @@ app.get("/", function(request, res) {
       }
       res.render("index", {title: "Welcome to XXI Tegal", 
       isLogin: request.session.isLogin,
-      movies
+      movies,
       })
     })
   })
@@ -88,7 +88,7 @@ app.get('/signup', function(request,response) {
   response.render('auth/signup', {
     title
   });
-});
+})
 // handle signup
 app.post('/signup', function(request,response) {
   var {email, password} = request.body;
@@ -116,7 +116,7 @@ app.post('/signup', function(request,response) {
 
         conn.release();
      });
-});
+})
 // render login
 app.get('/login', function(request,response) {
   const title = 'Login';
@@ -124,7 +124,7 @@ app.get('/login', function(request,response) {
     title,
     isLogin,
   });
-});
+})
 // handle login
 app.post('/login', function(request,response) {
   const { email, password } = request.body;
@@ -156,7 +156,7 @@ app.post('/login', function(request,response) {
         request.session.isLogin = true;
 
         request.session.user = {
-          id: results[0].id,
+          id: results[0].user_id,
           email: results[0].email,
           status: results[0].status
         }
@@ -175,12 +175,12 @@ app.post('/login', function(request,response) {
     });
     conn.release();
   });
-});
+})
 // handle signout
 app.get('/signout', function(request,response) {
   request.session.destroy();
   response.redirect('/');
-});
+})
 
 
 // mount backend page

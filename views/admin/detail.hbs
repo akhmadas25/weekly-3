@@ -3,27 +3,26 @@
 <div class="container-fluid">
 {{> sidebar}}
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-  <div class="container mt-5 text-center">
-      <div class="row row-cols-1 row-cols-md-3 mb-3">
-        {{#each movies}}
-            <div class="col">
-              <div class="card mb-4 rounded-3 shadow-sm">
-                <div class="card-header py-3">
-                  <h4 class="my-0 fw-normal">{{this.name}}</h4>
-                </div>
-                <div class="card-body">
-                  <img src="{{this.poster}}" alt="">
-                  <ul class="list-unstyled mt-3 mb-4">
-                    <li>{{this.duration}}</li>
-                    <li>{{this.sinopsis}}</li>
-                  </ul>
-                  <a class="w-20 me-2 btn btn-lg btn-warning" href="/edit/{{this.id}}">edit</a><span><a class="w-20 btn btn-lg btn-danger" href="/delete/{{this.id}}">delete</a></span>
-                </div>
+  {{#each movies}}
+      <div class="container py-3">
+          <h3>{{this.name}}</h3>
+          <div class="row">
+              <div class="col">
+                <img src="{{this.poster}}" alt="" style="height: 400px;">
               </div>
-            </div>
-        {{/each}}
+              <div class="col">
+                <a class="btn btn-warning me-2" href="/edit/{{this.id}}">edit</a>
+                <a class="btn btn-danger" href="/delete/{{this.id}}">Delete</a>
+                <h4 class="mt-3">Sinopsis</h4>
+                  <p>{{this.sinopsis}}</p>
+                <h4>Duration :</h4>
+                <p>{{this.duration}}</p>
+              </div>
+              <div class="col"></div>
+              <div class="col"></div>
+          </div>
+        </div>
       </div>
-  </div>
+  {{/each}}
 </main>
-</div>
 {{>footer}}

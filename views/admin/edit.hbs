@@ -10,6 +10,8 @@
 <div class="container-fluid">
 {{> sidebar}}
 {{#each movies}}
+
+<main id="wrap">
 <div class="container mt-5 mb-5">
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-md-6">
@@ -29,6 +31,10 @@
                     <label class="form-label">Duration</label>
                     <input type="text" class="form-control" name="duration">
                 </div>
+                <div class="mb-3">
+                    <label class="form-label">Sinopsis</label>
+                    <input type="text" class="form-control" name="sinopsis">
+                </div>
                 <div class="text-center">
                     <button class="btn btn-warning mt-4 signup " type="submit">Update Movie</button>
                 </div>
@@ -38,6 +44,7 @@
     </div>
 </div>
 </div>
+</main>
 {{/each}}
 <script>
   function handleChange(){

@@ -36,7 +36,7 @@ router.get("/admin", function(request, response) {
       else {
         response.redirect('/login')
       }
-
+      conn.release()
       });
     });
 })
@@ -75,7 +75,7 @@ router.get('/addMovies', function(request, response){
 })
 
 router.post('/addMovies', uploadFile('image'), function(request, response){
-  const {movie_title, duration, category} = request.body
+  const {movie_title, duration, sinopsis, category} = request.body
   var image = '';
 
 // handle file
@@ -92,7 +92,7 @@ router.post('/addMovies', uploadFile('image'), function(request, response){
     response.redirect('/addMovies');
   }
 
-  const query = `INSERT INTO tb_movie (name, movie_hour, poster, type_id) VALUES ("${movie_title}", "${duration}", "${image}", "${category}")`
+  const query = `INSERT INTO tb_movie (name, movie_hour, poster, sinopsis, type_id) VALUES ("${movie_title}", "${duration}", "${image}", "${sinopsis}", "${category}")`
   dbConnection.getConnection(function(err,conn){
     if(err) throw err
       conn.query(query,function(err,result) {
@@ -133,13 +133,13 @@ router.post('/addGenre', function (request, response){
         request.session.message = {
           type: 'success',
           message: 'Add genre has success',
-        };
+        }
 
         response.redirect('/addGenre');
-      });
+      })
 
       conn.release();
-   });
+   })
 
 })
 
@@ -158,7 +158,8 @@ router.get('/detail/:id', function(request,response) {
           id: result.id,
           name: result.name,
           duration: result.movie_hour,
-          poster: pathFile + result.poster
+          poster: pathFile + result.poster,
+          sinopsis: result.sinopsis
         });
       }
 
@@ -211,14 +212,14 @@ router.get('/edit/:id', function (request, response){
 })
 
 router.post('/edit', uploadFile('image'), function(request,response) {
-  const {movie_title, duration, oldPoster, id} = request.body
+  const {movie_title, duration, oldPoster, id, sinopsis} = request.body
 
   var image = oldPoster.replace(pathFile, '')
   if (request.file) {
     image = request.file.filename
   }
 
-  const query = `UPDATE tb_movie SET name = "${movie_title}", movie_hour = "${duration}", poster = "${image}" WHERE id = "${id}"`
+  const query = `UPDATE tb_movie SET name = "${movie_title}", movie_hour = "${duration}", poster = "${image}", sinopsis = "${sinopsis}" WHERE id = "${id}"`
 
   dbConnection.getConnection(function(err,conn){
     if(err) throw err

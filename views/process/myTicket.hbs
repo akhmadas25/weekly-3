@@ -1,0 +1,52 @@
+{{> header}}
+{{> navbar}}
+
+<main>
+{{#each ticket}}
+    <div class="container mt-5" id="ticket">
+    <div class="d-flex row">
+        <div class="col-md-8 ms-3">
+            <div class="p-3 rounded">
+                <div class="row">
+                    <div class="col-md-6 mt-5">
+                        {{!-- <h2 class="text-uppercase mt-2"></h2> --}}
+                        <div class="billed text-light"><span class="font-weight-bold text-uppercase">Billed:</span><span class="ml-1">{{this.email}}</span></div>
+                        <div class="billed text-light"><span class="font-weight-bold text-uppercase">Date:</span><span class="ml-1 text-light">{{this.date}}</span></div>
+                        <div class="billed mt-2"><span class="font-weight-bold text-uppercase">Ticket ID:</span><span class="ml-1 ">{{this.ticketNumber}}</span></div>
+                    </div>
+                    <div class="col-md-6 text-right mt-5">
+                        <h1 class="text-light text-uppercase pt-2 mb-0">XXI Tegal</h1>
+                    </div>
+                </div>
+                <div class="mt-5 me-3">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Movie</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{this.name}}</td>
+                                    <td>Rp {{this.price}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col mt-5 ms-2 text-center">
+            <h1 class="pt-3 text-light">{{this.venue}}</h1>
+            <h3 class="pt-5"> seat : </h3>
+            <h2 class="pt-2 text-primary">D39</h2>
+            <h3>{{this.time}}</h3>
+        </div>
+    </div>
+</div>
+{{/each}}
+</main>
+
+{{> footer}}

@@ -9,6 +9,7 @@
 <div class="container-fluid">
 {{> sidebar}}
 
+<main id="wrap">
 <div class="container mt-5 mb-5">
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-md-6">
@@ -33,6 +34,10 @@
                             <option value={{this.id}}>{{this.name}}</option>
                             {{/each}}
                     </select>
+                </div>
+                <div class="form-input">
+                    <label class="form-label">Sinopsis</label>
+                    <input type="text" class="form-control" name="sinopsis">
                 </div>
                 <div class="text-center">
                     <button class="btn btn-warning mt-4 signup " type="submit">Add Movie</button>
