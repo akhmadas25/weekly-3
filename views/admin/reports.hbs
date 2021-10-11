@@ -1,0 +1,32 @@
+{{> header}}
+{{> adminNavbar}}
+<div class="container-fluid">
+{{> sidebar}}
+<main class="col-md-9 mt-3 ms-sm-auto col-lg-10 px-md-4">
+    <table class="table css-serial">
+  <thead>
+    <tr>
+      <th scope="col">Ticket_id</th>
+      <th scope="col">Ticket number</th>
+      <th scope="col">Date</th>
+      <th scope="col">Movie</th>
+      <th scope="col">User email</th>
+      <th scope="col">Sub total</th>
+    </tr>
+  </thead>
+  <tbody>
+      {{#each reports}}
+    <tr>
+      <td>{{this.id}}</td>
+      <td>{{this.ticket}}</td>
+      <td>{{this.date}}</td>
+      <td>{{this.name}}</td>
+      <td>{{this.email}}</td>
+      <td>{{this.total}}</td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
+  
+</main>
+{{>footer}}

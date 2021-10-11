@@ -27,14 +27,17 @@
         {{!-- venue --}}
     
         <h4 class="mt-5">venue:</h4>
-        <input type="radio" class="btn-check" name="venue" id="venue1" value="Theatre 1" autocomplete="off">
-        <label class="btn btn-outline-light me-5" for="option1">Theatre 1</label>
-
-        <input type="radio" class="btn-check" name="venue" id="venue2" value="Theatre 2" autocomplete="off">
-        <label class="btn btn-outline-light me-5" for="option2">Theatre 2</label>
-
-        <input type="radio" class="btn-check" name="venue" id="venue3" value="Theatre 3" autocomplete="off">
-        <label class="btn btn-outline-light me-5" for="option3">Theatre 3</label>
+        <select class="form-select" name="venue" aria-label="Default select example">
+            <option selected>select venue</option>
+            <option value="Theatre 1">Theater 1</option>
+            <option value="Theatre 2">Theater 2</option>
+            <option value="Theatre 3">Theater 3</option>
+        </select>
+        <div class="form-outline mt-5">
+            <h4>Ticket amount</h4>
+            <input name="amount" type="number" id="form12" class="form-control" />
+            
+        </div>
     
     </div>
     <div class="text-center">

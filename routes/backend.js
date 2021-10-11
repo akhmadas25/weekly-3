@@ -41,6 +41,48 @@ router.get("/admin", function(request, response) {
     });
 })
 
+router.get("/reports", function(request, response){
+  const query = `SELECT t.id, t.ticket_number, t.date_show, p.sub_total, m.name, u.email
+  FROM tb_ticket t
+  INNER JOIN tb_movie m
+  ON t.movie_id = m.id
+  INNER JOIN tb_payment p
+  ON t.id = p.ticket_id
+  INNER JOIN tb_user u
+  ON t.user_id = u.user_id;`
+
+  dbConnection.getConnection(function (err,conn) {
+    if (err) throw err;
+    conn.query(query, function (err, results) {
+      if (err) throw err;
+      const reports = []
+
+      for (var result of results) {
+        reports.push({
+          id: result.id,
+          ticket: result.ticket_number,
+          name: result.name,
+          date: result.date_show,
+          email: result.email,
+          total: result.sub_total
+        });
+      }
+      if (request.session.isAdmin){
+        response.render("admin/reports", {
+        title: "dashboard", 
+        isAdmin: request.session.isAdmin,
+        reports
+      })
+      }
+      else {
+        response.redirect('/login')
+      }
+      conn.release()
+      })
+    })
+
+})
+
 router.get('/addMovies', function(request, response){
 
   const query = `SELECT id, name FROM tb_type`
